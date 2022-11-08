@@ -1,19 +1,23 @@
 import './App.css';
 import { Route } from "react-router-dom";
 import HomePage from './Components/Home/HomePage';
-import ChatPage from './Components/Chat/ChatPage';
-import Chat2 from './Components/Chat/Chat2';
 import StaffRegister from './Components/Home/StaffRegister';
-import Chat3 from './Components/Chat/Chat3';
+import AdminDashboard from './Components/Dashboard/AdminDashboard';
+import ManagerDashboard from './Components/Dashboard/ManagerDashboard';
+import WorkerDashboard from './Components/Dashboard/WorkerDashboard';
+import FileUploadPage from './Components/File/FileUploadPage';
+import SaveMessagePage from './Components/Messages/SaveMessagePage';
 
 function App() {
   return (
     <div className="App">
       <Route path="/" component={HomePage} exact />
       <Route path="/staffregister" component={StaffRegister} />
-      <Route path="/chats" component={ChatPage} />
-      <Route path="/chat2" component={Chat2} />
-      <Route path="/chat3" component={Chat3} />
+      <Route path="/message" component={SaveMessagePage} />
+      <Route path="/fileUpload" component={FileUploadPage} />
+      <Route path="/adminDashboard" component={AdminDashboard} />
+      <Route path="/managerDashboard" component={ManagerDashboard} />
+      <Route path="/workerDashboard" component={WorkerDashboard} />
     </div>
   );
 }

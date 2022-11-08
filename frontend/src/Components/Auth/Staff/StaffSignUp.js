@@ -117,7 +117,7 @@ const StaffSignup = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("/chat2");
+      history.push("/");
     } catch (error) {
       toast({
         title: "Error Occured!",
