@@ -27,7 +27,7 @@ const StaffRegister = () => {
         borderWidth="1px"
       >
         <Text fontFamily="work sans" fontSize="4xl" color="black">
-          Staff
+          STAFF
         </Text>
       </Box>
       <Box

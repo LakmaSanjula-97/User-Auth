@@ -30,7 +30,7 @@ const HomePage = () => {
           fontSize= "4xl"
           color= "black"
         >
-          Chat Application
+          ADMIN
         </Text>
       </Box>
       <Box
