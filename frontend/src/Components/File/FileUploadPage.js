@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Container,
   Box,
@@ -7,10 +7,9 @@ import {
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
+import FileUpload from "./FileUpload";
 
-import StaffSignup from "../Auth/Staff/StaffSignUp";
-
-const StaffRegister = () => {
+const FileUploadPage = () => {
   return (
     <Container maxW="xl" centerContent>
       <Box
@@ -24,7 +23,7 @@ const StaffRegister = () => {
         borderWidth="1px"
       >
         <Text fontFamily="work sans" fontSize="4xl" color="black">
-          Add Staff Members
+          Uplaod File Here
         </Text>
       </Box>
       <Box
@@ -38,13 +37,13 @@ const StaffRegister = () => {
         <Tabs variant="soft-rounded" colorScheme="green">
           <TabPanels>
             <TabPanel>
-              <StaffSignup />
+              <FileUpload />
             </TabPanel>
           </TabPanels>
         </Tabs>
       </Box>
     </Container>
   );
-};
+}
 
-export default StaffRegister;
+export default FileUploadPage

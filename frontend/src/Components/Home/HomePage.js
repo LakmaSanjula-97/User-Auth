@@ -3,14 +3,11 @@ import {
   Container, 
   Box, 
   Text,
-  Tab, 
   Tabs,
-  TabList,
   TabPanels,
   TabPanel
 } from "@chakra-ui/react";
-import Login from '../Auth/Login';
-import SignUp from '../Auth/SignUp';
+import Login from '../Auth/Staff/StaffLogin';
 
 const HomePage = () => {
   return (
@@ -30,7 +27,7 @@ const HomePage = () => {
           fontSize= "4xl"
           color= "black"
         >
-          ADMIN
+          SIGN-IN
         </Text>
       </Box>
       <Box
@@ -45,17 +42,14 @@ const HomePage = () => {
           variant='soft-rounded' 
           colorScheme='green'
         >
-          <TabList>
-            <Tab width="50%">Sign-In</Tab>
-            <Tab width="50%">Sign-Up</Tab>
-          </TabList>
+          
           <TabPanels>
             <TabPanel>
               <Login />
             </TabPanel>
-            <TabPanel>
+            {/* <TabPanel>
               <SignUp />
-            </TabPanel>
+            </TabPanel> */}
           </TabPanels>
         </Tabs>
       </Box>

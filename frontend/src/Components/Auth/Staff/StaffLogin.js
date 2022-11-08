@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 
-
 const StaffLogin = () => {
 
   const [show, setShow] = useState(false);
@@ -56,8 +55,9 @@ const StaffLogin = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      if (data.role === "manager") return history.push("/chat2");
-      if (data.role === "worker") return history.push("/chat3");
+      if (data.role === "admin") return history.push("/adminDashboard");
+      if (data.role === "manager") return history.push("/managerDashboard");
+      if (data.role === "worker") return history.push("/workerDashboard");
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -108,7 +108,7 @@ const StaffLogin = () => {
       >
         Login
       </Button>
-      <Button
+      {/* <Button
         variant="solid"
         colorScheme="red"
         width="100%"
@@ -118,7 +118,7 @@ const StaffLogin = () => {
         }}
       >
         Get Guest User Credentials
-      </Button>
+      </Button> */}
     </VStack>
   );
 }
