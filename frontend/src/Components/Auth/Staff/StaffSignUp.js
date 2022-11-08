@@ -5,12 +5,13 @@ import { FormControl, FormLabel } from "@chakra-ui/react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import { VStack } from "@chakra-ui/react";
+import { VStack, Select } from "@chakra-ui/react";
 
 const StaffSignup = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+  const [role, setRole] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
   const [password, setPassword] = useState();
   const [pic, setPic] = useState();
@@ -67,7 +68,7 @@ const StaffSignup = () => {
 
   const submitHandler = async () => {
     setLoading(true);
-    if (!name || !email || !password || !confirmpassword) {
+    if (!name || !email || !role || !password || !confirmpassword) {
       toast({
         title: "Please Fill all the Feilds",
         status: "warning",
@@ -88,7 +89,7 @@ const StaffSignup = () => {
       });
       return;
     }
-    console.log(name, email, password, pic);
+    console.log(name, email, role, password, pic);
     try {
       const config = {
         headers: {
@@ -100,6 +101,7 @@ const StaffSignup = () => {
         {
           name,
           email,
+          role,
           password,
           pic,
         },
@@ -146,6 +148,35 @@ const StaffSignup = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormControl>
+      {/* <FormControl id="role" isRequired>
+        <FormLabel>Role</FormLabel>
+
+        <select id="role" isrequired
+          onChange={(e) => {
+            setRole(e.target.value);
+          }}
+        >
+          <option>Select Type</option>
+          <option value="manager">Manager</option>
+          <option value="worker">Worker</option>
+        </select>
+      </FormControl> */}
+
+      <FormControl>
+        <FormLabel>Role</FormLabel>
+        <Select
+          placeholder="Select Your Role"
+          id="role"
+          isrequired
+          onChange={(e) => {
+            setRole(e.target.value);
+          }}
+        >
+          <option value="manager">Manager</option>
+          <option value="worker">Worker</option>
+        </Select>
+      </FormControl>
+
       <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup size="md">

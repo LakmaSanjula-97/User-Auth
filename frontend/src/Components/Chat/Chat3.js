@@ -2,7 +2,7 @@ import React from "react";
 // import axios from 'axios';
 // import { useEffect, useState } from "react";
 
-const Chat2 = () => {
+const Chat3 = () => {
   // const [chats, setChats] = useState([]);
 
   // const featchChats = async () => {
@@ -20,9 +20,9 @@ const Chat2 = () => {
       {/* { chats.map((chat) => (
             <div key = { chat._id }>{ chat.chatName }</div>
         ))} */}
-      manager
+      Worker
     </div>
   );
 };
 
-export default Chat2;
+export default Chat3;

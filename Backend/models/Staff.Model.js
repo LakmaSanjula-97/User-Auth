@@ -11,7 +11,13 @@ const staffModel = mongoose.Schema(
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
     },
+    role: {
+      type: String,
+      required: true,
+      default: false,
+    },
   },
+  
   {
     timestamps: true,
   }

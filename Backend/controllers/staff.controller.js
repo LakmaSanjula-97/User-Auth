@@ -3,9 +3,9 @@ const Staff = require("../models/Staff.Model");
 const generateToken = require("../config/generateToken");
 
 const registerStaff = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, pic, role } = req.body;
 
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !role) {
     res.status(400);
     throw new Error("Please Enter all the Feilds");
   }
@@ -22,6 +22,7 @@ const registerStaff = asyncHandler(async (req, res) => {
     email,
     password,
     pic,
+    role
   });
 
   if (user) {
@@ -29,8 +30,9 @@ const registerStaff = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
+      // isAdmin: user.isAdmin,
       pic: user.pic,
+      role: user.role,
       token: generateToken(user._id),
     });
   } else {
@@ -40,17 +42,20 @@ const registerStaff = asyncHandler(async (req, res) => {
 });
 
 const authStaff = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
 
   const user = await Staff.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
+  if (
+    user &&
+    (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
-    //   isAdmin: user.isAdmin,
+      //   isAdmin: user.isAdmin,
       pic: user.pic,
+      role: user.role,
       token: generateToken(user._id),
     });
   } else {
