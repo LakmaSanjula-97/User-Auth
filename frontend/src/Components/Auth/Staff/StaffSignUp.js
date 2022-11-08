@@ -28,7 +28,7 @@ const StaffSignup = () => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       return;
     }
@@ -58,7 +58,7 @@ const StaffSignup = () => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       setLoading(false);
       return;
@@ -73,7 +73,7 @@ const StaffSignup = () => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       setLoading(false);
       return;
@@ -84,7 +84,7 @@ const StaffSignup = () => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       return;
     }
@@ -111,7 +111,7 @@ const StaffSignup = () => {
         status: "success",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
@@ -123,7 +123,7 @@ const StaffSignup = () => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top",
       });
       setLoading(false);
     }
