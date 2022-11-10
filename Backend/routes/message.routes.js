@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const MessageController = require("../controllers/message.controller");
+const { protect } = require("../middleware/authenticationMiddleware.js")
+const { saveMessage } = require("../controllers/message.controller");
 
-module.exports = function () {
-  router.post("/save", MessageController.saveMessage);
 
-  return router;
-};
+router.route("/save").post(protect, saveMessage);
+
+module.exports = router;

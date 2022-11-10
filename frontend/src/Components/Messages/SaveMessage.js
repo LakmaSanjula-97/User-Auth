@@ -18,7 +18,7 @@ const SaveMessage = () => {
   const history = useHistory();
 
 
-  const submitHandler = async () => {
+  const submitHandler = async (getState) => {
     setLoading(true);
     if (!writerName || !date || !description ) {
       toast({
@@ -34,11 +34,18 @@ const SaveMessage = () => {
     
     console.log(writerName, date, description);
     try {
+      const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
+      // const {
+      //   userLogin: { userInfo },
+      //  } = getState()
       const config = {
+        
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
       };
+      console.log(userInfo);
       const { data } = await axios.post(
         "/api/message/save",
         {
