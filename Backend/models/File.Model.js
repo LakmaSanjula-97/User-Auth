@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 const fileSchema = new Schema(
   {
+    user: {
+      type:mongoose.Schema.Types.ObjectId, required: true, ref: 'Staff'
+    },
     title: { type: String, required: true },
     doc: { type: String, required: true },
   },

@@ -26,4 +26,14 @@ const protect = asyncHandler(async(req, res, next) => {
     }
 })
 
-module.exports = { protect };
+
+const manager = (req, res, next) => {
+    if(req.user && req.user.role === "manager"){
+        next()
+    }else {
+        res.status(401)
+        throw new Error('Not authorized as a manager')
+    }
+}
+
+module.exports = { protect, manager };

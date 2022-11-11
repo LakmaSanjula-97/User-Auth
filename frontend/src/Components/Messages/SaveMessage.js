@@ -6,17 +6,17 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { VStack } from "@chakra-ui/react";
+import bcrypt from "bcryptjs"
 
 const SaveMessage = () => {
   
   const [writerName, setWriterName] = useState();
   const [date, setDate] = useState();
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState("");
 
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
-
 
   const submitHandler = async (getState) => {
     setLoading(true);
@@ -31,7 +31,7 @@ const SaveMessage = () => {
       setLoading(false);
       return;
     }
-    
+    const hash = bcrypt.hashSync(description, 10);
     console.log(writerName, date, description);
     try {
       const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
@@ -51,7 +51,7 @@ const SaveMessage = () => {
         {
           writerName,
           date,
-          description,
+          description : bcrypt.hashSync(description, 10),
         },
         config
       );

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { protect } = require("../middleware/authenticationMiddleware.js")
+const { protect } = require("../middleware/authenticationMiddleware")
 const { saveMessage } = require("../controllers/message.controller");
 
 
