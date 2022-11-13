@@ -1,13 +1,17 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import { Container, Button } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
+import NavigationBar from '../NavigatioBar/NavigationBar';
+import WorkerDashboardDetails from './WorkerDashboardDetails';
 
 const WorkerDashboard = () => {
   return (
     <Container>
-      <Button>
-        <Link to="/message">Add Message</Link>
-      </Button>
+      <NavigationBar />
+      <br />
+      <br />
+      <br />
+      <br />
+      <WorkerDashboardDetails />
     </Container>
   );
 }

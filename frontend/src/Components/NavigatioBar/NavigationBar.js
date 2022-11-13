@@ -1,21 +1,24 @@
-import { Button } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
+} from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./NavigationBar.css";
 
 function NavigationBar() {
   
   const history = useHistory();
 
-      
-  
     async function logout(e){
       try {
-          
-
-            e.preventDefault();
-
-            
+        e.preventDefault();
+    
         const userInfo = localStorage.getItem("userInfo")
           ? JSON.parse(localStorage.getItem("userInfo"))
           : null;
@@ -29,19 +32,40 @@ function NavigationBar() {
         console.log(data);
         history.push("/");
         console.log("uhuh", data); 
-        }catch(err){
-
-        }
+      }catch(err){
+        console.log(err);
+      }
     }
-    return(
+    return (
+      <Box id="topnav">
+        <a id="logo" className="nav-link" href="#">
+          USER MANAGEMENT SYSTEM
+        </a>
 
-       
-        <div id="view1">
-  
-            <Button id="view2" onClick={(e)=>{logout(e)}}><a>Logout</a></Button>
+        <div id="about">
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            id="about"
+            onClick={(e) => {
+              logout(e);
+            }}
+          >
+            <AvatarGroup spacing="1rem">
+              <Avatar size='sm' bg="teal.300" />
+            </AvatarGroup> &nbsp;
+            <a>Logout</a>
+          </Button>
         </div>
-        
-    )
+
+        {/* <a id="about" class="nav-link" href="#">
+          About Me
+        </a> */}
+      </Box>
+      // <div id="view1">
+      //   <Button id="view2" onClick={(e)=>{logout(e)}}><a>Logout</a></Button>
+      // </div>
+    );
 }
 export default NavigationBar;
 
