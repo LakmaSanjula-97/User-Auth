@@ -10,7 +10,11 @@ import {
 import FileUpload from "./FileUpload";
 
 const FileUploadPage = () => {
+  const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
+
   return (
+    <>
+    { userInfo.role === "manager"?(
     <Container maxW="xl" centerContent>
       <Box
         d="flex"
@@ -43,6 +47,8 @@ const FileUploadPage = () => {
         </Tabs>
       </Box>
     </Container>
+    ):(<h1>ffff</h1>)}
+    </>
   );
 }
 
