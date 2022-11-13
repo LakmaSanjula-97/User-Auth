@@ -66,6 +66,8 @@ const StaffSignup = () => {
     }
   };
 
+  const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
+
   const submitHandler = async () => {
     setLoading(true);
     if (!name || !email || !role || !password || !confirmpassword) {
@@ -91,9 +93,11 @@ const StaffSignup = () => {
     }
     console.log(name, email, role, password, pic);
     try {
+      const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
       const config = {
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await axios.post(
@@ -132,6 +136,8 @@ const StaffSignup = () => {
   };
 
   return (
+    <>
+    { userInfo.role === "admin"?(
     <VStack spacing="5px">
       <FormControl id="name" isRequired>
         <FormLabel>Name</FormLabel>
@@ -226,6 +232,8 @@ const StaffSignup = () => {
         Sign Up
       </Button>
     </VStack>
+    ):(<h1>ffff</h1>)}
+    </>
   );
 };
 
