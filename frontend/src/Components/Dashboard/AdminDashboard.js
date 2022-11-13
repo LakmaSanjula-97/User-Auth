@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import {
   Container, Button
 } from "@chakra-ui/react";
+import NavigationBar from '../NavigatioBar/NavigationBar';
 
 const AdminDashboard = () => {
   return (
     <Container>
+      <NavigationBar />
       <Button>
         <Link to="/staffregister">Add Staff Members</Link>
       </Button>

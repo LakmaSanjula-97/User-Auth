@@ -76,9 +76,13 @@ const FileUpload = () => {
     
     console.log(title, doc);
     try {
+      const userInfo = localStorage.getItem("userInfo")
+        ? JSON.parse(localStorage.getItem("userInfo"))
+        : null;
       const config = {
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await axios.post(
