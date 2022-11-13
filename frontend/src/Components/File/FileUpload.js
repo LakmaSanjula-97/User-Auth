@@ -28,7 +28,7 @@ const FileUpload = () => {
       return;
     }
     console.log(docs);
-    if (docs.type === "application/pdf") {
+    if (docs.type === "application/pdf" || docs.type === "application/doc") {
       const data = new FormData();
       data.append("file", docs);
       data.append("upload_preset", "AuthApp");
