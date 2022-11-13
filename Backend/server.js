@@ -6,9 +6,9 @@ const messageRouter = require("./routes/message.routes");
 const fileUploadRouter = require("./routes/file.routes");
 const { notFound , errorHandler} = require("./middleware/errorMiddleware");
 
-// const https = require("https");
-// const path = require("path");
-// const fs = require("fs");
+const https = require("https");
+const path = require("path");
+const fs = require("fs");
 
 dotenv.config();
 connectDB();
@@ -27,8 +27,13 @@ app.use("/api/file", fileUploadRouter());
 app.use(notFound);
 app.use(errorHandler);
 
+const sslServer = https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
+}, app)
 
+sslServer.listen(5000, () => console.log('secure server on port 5000'))
 
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
-app.listen(5000, console.log(`server is running on PORT ${PORT}`));
+// app.listen(5000, console.log(`server is running on PORT ${PORT}`));
