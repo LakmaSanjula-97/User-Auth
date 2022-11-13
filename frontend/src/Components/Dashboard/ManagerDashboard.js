@@ -1,16 +1,17 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import { Container, Button } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
+import NavigationBar from '../NavigatioBar/NavigationBar';
+import ManagerDashboardDetails from './ManagerDashboardDetails';
 
 const ManagerDashboard = () => {
   return (
     <Container>
-      <Button>
-        <Link to="/message">Add Message</Link>
-      </Button>
-      <Button>
-        <Link to="/fileUpload">Upload File</Link>
-      </Button>
+      <NavigationBar />
+      <br />
+      <br />
+      <br />
+      <br />
+      <ManagerDashboardDetails />
     </Container>
   );
 }
