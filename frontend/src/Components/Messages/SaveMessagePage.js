@@ -9,8 +9,14 @@ import {
 } from "@chakra-ui/react";
 import Message from "./SaveMessage";
 
+
+
 const SaveMessagePage = () => {
+  const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
+
   return (
+    <>
+    { userInfo.role === "manager" || userInfo.role === "worker"?(
     <Container maxW="xl" centerContent>
       <Box
         d="flex"
@@ -43,6 +49,8 @@ const SaveMessagePage = () => {
         </Tabs>
       </Box>
     </Container>
+     ):(<h1>ffff</h1>)}
+     </>
   );
 }
 

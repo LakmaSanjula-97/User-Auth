@@ -18,6 +18,8 @@ const SaveMessage = () => {
   const toast = useToast();
   const history = useHistory();
 
+  //const userInfo = localStorage.getItem("userInfo");
+
   const submitHandler = async (getState) => {
     setLoading(true);
     if (!writerName || !date || !description ) {
@@ -80,7 +82,8 @@ const SaveMessage = () => {
   };
 
   return (
-    <VStack spacing="5px">
+    
+      <VStack spacing="5px">
       <FormControl id="writerName" isRequired>
         <FormLabel>Writer Name</FormLabel>
         <Input
@@ -117,6 +120,9 @@ const SaveMessage = () => {
         Save
       </Button>
     </VStack>
+
+  
+    
   );
 };
 
