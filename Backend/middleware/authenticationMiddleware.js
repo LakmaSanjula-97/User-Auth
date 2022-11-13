@@ -36,4 +36,13 @@ const manager = (req, res, next) => {
     }
 }
 
-module.exports = { protect, manager };
+const admin = (req, res, next) => {
+    if(req.user && req.user.role === "admin"){
+        next()
+    }else {
+        res.status(401)
+        throw new Error('Not authorized as a admin')
+    }
+}
+
+module.exports = { protect, manager, admin };
