@@ -1,23 +1,19 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React, { Fragment } from 'react'
 import {
-  Container, Button
+  Container
 } from "@chakra-ui/react";
 import NavigationBar from '../NavigatioBar/NavigationBar';
+import AdminDashboardDetails from './AdminDashboardDetails';
 
 const AdminDashboard = () => {
   return (
     <Container>
       <NavigationBar />
-      <Button>
-        <Link to="/staffregister">Add Staff Members</Link>
-      </Button>
-      <Button>
-        <Link to="/message">Add Message</Link>
-      </Button>
-      <Button>
-        <Link to="/fileUpload">Upload File</Link>
-      </Button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <AdminDashboardDetails />
     </Container>
   );
 }
