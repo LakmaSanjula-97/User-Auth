@@ -63,4 +63,44 @@ describe("Send Message", () => {
     });
   })
 
+  const token1 = "";
+
+  describe("Send Message by manager", () => {
+    it("It should be possible for authorized managers to send messages.", (done) => {
+      request(app)
+        .post("/api/message/save")
+        .send(
+         { 
+            writerName:"minuuu",
+            date:"123",
+            description:"mmmmmmmmmmmmmmm"}
+        )
+        .set('Authorization', `Bearer ${token}`)
+        .expect(201)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+    it("No message should be posted by an unauthorised user.", (done) => {
+      request(app)
+        .post("/api/message/save")
+        .send(
+         { 
+            writerName:"Tani",
+            date:"08/11/2022",
+            description:"Hiii"
+          }
+        )
+        .set('Authorization', `Bearer ${token1}`)
+        .expect(401)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+  })
+
   
