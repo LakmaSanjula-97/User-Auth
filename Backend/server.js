@@ -34,6 +34,9 @@ const sslServer = https.createServer({
 
 sslServer.listen(5000, () => console.log('secure server on port 5000'))
 
+
+module.exports = app;
+
 // const PORT = process.env.PORT || 5000;
 
 // app.listen(5000, console.log(`server is running on PORT ${PORT}`));
