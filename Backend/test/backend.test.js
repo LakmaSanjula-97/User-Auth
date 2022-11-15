@@ -31,4 +31,36 @@ describe("Send Message", () => {
     });
   })
 
+  describe("Login", () => {
+    it("User must use correct credentials to log in.", (done) => {
+      request(app)
+        .post("/api/staff/login")
+        .send(
+         { email:"manager@gmail.com",
+          password: "123"}
+        )
+        .expect(200)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+  
+    it("Authentic credentials must be used when logging in.", (done) => {
+      request(app)
+        .post("/api/staff/login")
+        .send(
+         { email:"manager@gmail.com",
+          password: "12344"}
+        )
+        .expect(401)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+  })
+
   
