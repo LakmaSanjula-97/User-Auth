@@ -103,4 +103,40 @@ describe("Send Message", () => {
     });
   })
 
-  
+  const tokenmanager = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmI4OGIxZTJlNzJlYzM0OWJjOWEwYSIsImlhdCI6MTY2ODQ1NjY0NCwiZXhwIjoxNjcxMDQ4NjQ0fQ.odhZwL1txVKUDqRc0Ui6h3xKTGtVLrAMepn7z80DqEk";
+  const token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUwMzQ5ZTgyYzVkYTZmMzJlZGY0NCIsImlhdCI6MTY2ODQ1NzE0MywiZXhwIjoxNjcxMDQ5MTQzfQ.xP5xiImGGw8KXD5mxstL4us5CbnvIR2vjORMJUDYuyY";
+  describe("Upload File by manager", () => {
+    it("Authorized manager should be able to upload file", (done) => {
+      request(app)
+        .post("/api/file/upload")
+        .send(
+         { 
+            title:"report",
+            doc:"https://icon-library.com/images/anonymous-avatar-icon/anonymous"}
+        )
+        .set('Authorization', `Bearer ${tokenmanager}`)
+        .expect(201)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+    it("unauthorized user should not be able to upload file", (done) => {
+      request(app)
+        .post("/api/file/upload")
+        .send(
+         { 
+            title:"report",
+            doc:"https://icon-library.com/images/anonymous-avatar-icon/anonymous"}
+          
+        )
+        .set('Authorization', `Bearer ${token2}`)
+        .expect(401)
+        .then((res) => {
+         
+          done();
+        })
+        .catch((err) => done(err));
+    });
+  })
