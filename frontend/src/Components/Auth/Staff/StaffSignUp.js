@@ -232,7 +232,7 @@ const StaffSignup = () => {
         Sign Up
       </Button>
     </VStack>
-    ):(<h1>ffff</h1>)}
+    ):(<h1>Not Authorized. Please login or signup to the system</h1>)}
     </>
   );
 };

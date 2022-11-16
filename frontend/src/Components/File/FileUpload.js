@@ -102,7 +102,7 @@ const FileUpload = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("/chats");
+      history.push("/fileUpload");
     } catch (error) {
       toast({
         title: "Error Occured!",
