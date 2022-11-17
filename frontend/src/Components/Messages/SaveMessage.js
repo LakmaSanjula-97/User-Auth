@@ -6,7 +6,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { VStack } from "@chakra-ui/react";
-import bcrypt from "bcryptjs"
+// import bcrypt from "bcryptjs"
 
 const SaveMessage = () => {
   
@@ -33,7 +33,7 @@ const SaveMessage = () => {
       setLoading(false);
       return;
     }
-    const hash = bcrypt.hashSync(description, 10);
+    // const hash = bcrypt.hashSync(description, 10);
     console.log(writerName, date, description);
     try {
       const userInfo = localStorage.getItem("userInfo")?JSON.parse(localStorage.getItem('userInfo')):null
@@ -53,7 +53,7 @@ const SaveMessage = () => {
         {
           writerName,
           date,
-          description : bcrypt.hashSync(description, 10),
+          description 
         },
         config
       );
