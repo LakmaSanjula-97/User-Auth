@@ -67,7 +67,7 @@ const SaveMessage = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("/message");
+      history.push("/");
     } catch (error) {
       toast({
         title: "Error Occured!",
