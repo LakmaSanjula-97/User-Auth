@@ -2,6 +2,8 @@ const request = require( "supertest");
 const  { expect } = require( "chai");
 const dotenv = require("dotenv");
 const app = require("../server");
+const crypto = require ("crypto");
+const algorithm = "aes-256-cbc"; 
 dotenv.config();
 
 before(function (done) {
@@ -66,6 +68,15 @@ describe("Send Message", () => {
   const token1 = "";
 
   describe("Send Message by manager", () => {
+    const initVector = crypto.randomBytes(16);
+
+    const Securitykey = crypto.randomBytes(32);
+    const description = "aaaa";
+    const cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+  
+    let encryptedData = cipher.update(description, "utf-8", "hex");
+  
+    encryptedData += cipher.final("hex");
     it("It should be possible for authorized managers to send messages.", (done) => {
       request(app)
         .post("/api/message/save")
@@ -73,7 +84,7 @@ describe("Send Message", () => {
          { 
             writerName:"minuuu",
             date:"123",
-            description:"mmmmmmmmmmmmmmm"}
+            description:encryptedData}
         )
         .set('Authorization', `Bearer ${token}`)
         .expect(201)
@@ -90,7 +101,7 @@ describe("Send Message", () => {
          { 
             writerName:"Tani",
             date:"08/11/2022",
-            description:"Hiii"
+            description:encryptedData
           }
         )
         .set('Authorization', `Bearer ${token1}`)
@@ -139,4 +150,20 @@ describe("Send Message", () => {
         })
         .catch((err) => done(err));
     });
+  })
+
+
+  describe("Encryption", () => {
+    it("should be encrypted", () => {
+      const initVector = crypto.randomBytes(16);
+
+      const Securitykey = crypto.randomBytes(32);
+      const description = "aaaa";
+      const cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+    
+      let encryptedData = cipher.update(description, "utf-8", "hex");
+    
+      encryptedData += cipher.final("hex");
+    });
+
   })
