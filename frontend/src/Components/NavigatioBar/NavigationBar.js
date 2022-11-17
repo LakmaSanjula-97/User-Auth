@@ -1,9 +1,7 @@
 import {
   Box,
   Button,
-  Container,
   Avatar,
-  AvatarBadge,
   AvatarGroup,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -38,7 +36,7 @@ function NavigationBar() {
     }
     return (
       <Box id="topnav">
-        <a id="logo" className="nav-link" href="#">
+        <a href="#"  id="logo" className="nav-link">
           USER MANAGEMENT SYSTEM
         </a>
 
@@ -52,8 +50,9 @@ function NavigationBar() {
             }}
           >
             <AvatarGroup spacing="1rem">
-              <Avatar size='sm' bg="teal.300" />
-            </AvatarGroup> &nbsp;
+              <Avatar size="sm" bg="teal.300" />
+            </AvatarGroup>{" "}
+            &nbsp;
             <a>Logout</a>
           </Button>
         </div>
